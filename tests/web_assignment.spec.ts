@@ -1,0 +1,48 @@
+import { expect } from '@playwright/test';
+import { test } from '../pages/fixtures'
+import { sign } from 'crypto';
+
+test('assignment web with fixture', async ({loginPage, signupPage, searchPage, productDetailPage, deliverInfoPage, paymentMethodPage, paymentCreditCardPage, paymentSuccessPage})=>{
+  await searchPage.goToSearchPage()
+  await searchPage.pageShouldContainTextDoppee()
+  await searchPage.clickUserIcon()
+  await loginPage.pageShouldBeLoginUrl()
+  await loginPage.clickSignupButton()
+  await signupPage.pageShouldBeSignupPage()
+  await signupPage.inputUsername('r_test_pw58@gmail.com')
+  await signupPage.inputPassword('RTestPw@24')
+  await signupPage.inputConfirmPassword('RTestPw@24')
+  await signupPage.clickSignupButton()
+  await signupPage.signupSuccessfullyMessageShouldBeDisplayed()
+  await signupPage.clickOkButton()
+
+  await searchPage.searchProduct('phone')
+  await searchPage.submitSearchAction()
+  const selectedProduct = await searchPage.getProductByIndex(0)
+  await searchPage.allSearchedProductNameShouldContainExpectedKeyword('phone')
+  await searchPage.clickProductByIndex(0)
+
+  await productDetailPage.clickAddToCart()
+  await productDetailPage.addCartSuccessfulMessageShouldBeDisplayed()
+  await productDetailPage.clickOkButton()
+  await productDetailPage.clickCartIcon()
+  await deliverInfoPage.selectedProductShouldBeDisplayed(selectedProduct)
+  await deliverInfoPage.inputFirstname('test')
+  await deliverInfoPage.inputLastname('test')
+  await deliverInfoPage.inputAddress('test')
+  await deliverInfoPage.inputPhoneNumber('0811111111')
+  await deliverInfoPage.inputEmail('r_test_pw58@gmail.com')
+  await deliverInfoPage.clickPayButton()
+
+  await paymentMethodPage.selectedCreditCardOptionShouldBeDisplayed()
+  await paymentMethodPage.clickNextButton()
+  await paymentCreditCardPage.inputCardNumber('4111111111111111')
+  await paymentCreditCardPage.inputExpiredDate('01/2025')
+  await paymentCreditCardPage.inputCvc('123')
+  await paymentCreditCardPage.inputOwnerName('test test')
+  await paymentCreditCardPage.clickConfirm()
+  await paymentCreditCardPage.paymentMessageSuccessfullyShouldBeDisplayed()
+  await paymentCreditCardPage.clickOkButton()
+  await paymentSuccessPage.paymentCompleteMessageShouldBeVisible()
+  await paymentSuccessPage.itShouldNavigateToPaymentSuccessPageWithOrderId()
+})
