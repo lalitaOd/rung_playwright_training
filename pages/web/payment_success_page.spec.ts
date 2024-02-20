@@ -1,4 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
+import testdata from '../../testdata/testdata.json';
 
 
 export class PaymentSuccessPage {
@@ -20,15 +21,8 @@ export class PaymentSuccessPage {
         const completeContent = await this.orderInfo.textContent()
         const arr: string[] | undefined = completeContent?.split('ORDER ID: ')[1].split(' ')
         const orderId = arr ? arr[0] : arr
-        await expect(this.page).toHaveURL(`https://training-platform.doppio-tech.com/paymentSuccess?id=${orderId}`)
+        await expect(this.page).toHaveURL(`${testdata.web_url.payment_success_url}${orderId}`)
     }
 
 }
 
-
-//   await expect(page.getByText('Payment Complete')).toBeVisible()
-//   let completeContent = await page.locator('.success-description').textContent()
-//   const arr: string[] | undefined = completeContent?.split('ORDER ID: ')[1].split(' ')
-//   const orderId = arr ? arr[0] : arr
-//   await expect(page).toHaveURL(`https://training-platform.doppio-tech.com/paymentSuccess?id=${orderId}`)
-// });

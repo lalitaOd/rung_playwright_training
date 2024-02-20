@@ -12,7 +12,7 @@ import { PaymentSuccessPage } from './web/payment_success_page.spec';
 
 export const test = base.extend<{ loginPage: LoginPage, signupPage: SignupPage, searchPage: SearchPage, 
   productDetailPage: ProductDetailPage, deliverInfoPage: DeliverInfoPage, paymentMethodPage: PaymentMethodPage,
-  paymentCreditCardPage: PaymentCreditCardPage, paymentSuccessPage: PaymentSuccessPage }>({
+  paymentCreditCardPage: PaymentCreditCardPage, paymentSuccessPage: PaymentSuccessPage}>({
     loginPage: async ({ page }, use) => {
         await use(new LoginPage(page))
     },
@@ -37,4 +37,5 @@ export const test = base.extend<{ loginPage: LoginPage, signupPage: SignupPage, 
     paymentSuccessPage: async ({ page }, use) => {
       await use(new PaymentSuccessPage(page))
     }
+
 });

@@ -49,11 +49,3 @@ export class DeliverInfoPage {
     }
 
 }
-
-//   await expect(page.getByText(selectedProduct)).toBeVisible()
-//   await page.locator('#form_item_name').fill('test')
-//   await page.locator('#form_item_surName').fill('test')
-//   await page.locator('#form_item_address').fill('test')
-//   await page.locator('#form_item_phone').fill('0811111111')
-//   await page.locator('#form_item_email').fill('r_test_pw53@gmail.com')
-//   await page.locator('//span[text()="PAY"]').click()

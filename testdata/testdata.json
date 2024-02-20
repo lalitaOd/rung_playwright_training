@@ -1,0 +1,21 @@
+{
+    "username": "r_test_pw62@gmail.com",
+    "password": "RTestPw@24",
+    "confirm_password": "RTestPw@24",
+    "search_product": "phone",
+    "product_index": 0,
+    "firstname": "test",
+    "lastname": "test",
+    "address": "test",
+    "email": "r_test_pw62@gmail.com",
+    "phone_number": "0811111111",
+    "credit_card_number": "4111111111111111",
+    "expired_date": "01/2025",
+    "cvc": "123",
+    "card_owner_name": "test test",
+    "web_url": {
+        "login_url" : "https://training-platform.doppio-tech.com/login",
+        "payment_success_url": "https://training-platform.doppio-tech.com/paymentSuccess?id=",
+        "register_url": "https://training-platform.doppio-tech.com/register"
+    }
+}

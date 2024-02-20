@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-
+import testdata from '../../testdata/testdata.json';
 
 export class LoginPage {
     page: Page
@@ -13,7 +13,7 @@ export class LoginPage {
     }
 
     async pageShouldBeLoginUrl(){
-        await expect(this.page).toHaveURL('https://training-platform.doppio-tech.com/login')
+        await expect(this.page).toHaveURL(testdata.web_url.login_url)
     }
 
     async clickSignupButton(){
