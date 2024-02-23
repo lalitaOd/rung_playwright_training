@@ -1,4 +1,5 @@
 import { APIRequestContext, expect } from '@playwright/test';
+import testdata from '../../testdata/testdata.json';
 
 
 export class AssetsApi {
@@ -7,11 +8,10 @@ export class AssetsApi {
     
     constructor(request: APIRequestContext){
         this.request = request
-        this.url = 'http://localhost:8082'
     }
 
     async getAssetAndStatusShouldBeSuccess(){
-        const response = await this.request.get(`${this.url}/assets`)
+        const response = await this.request.get(`${testdata.baseUrl}/assets`)
         expect(response.status()).toBe(200)
         const responseBody = JSON.parse(await response.text())
         console.log("Get responseBody",responseBody)
@@ -19,7 +19,7 @@ export class AssetsApi {
     }
 
     async createAssetAndStatusShouldBeSuccess(assetId: string, assetName: string, assetType: string, inUseFlag: boolean){
-        const response = await this.request.post(`${this.url}/assets`, {
+        const response = await this.request.post(`${testdata.baseUrl}/assets`, {
             data: {
                     assetId: assetId,
                     assetName: assetName,
@@ -33,7 +33,7 @@ export class AssetsApi {
     }
 
     async updateAssetAndStatusShouldBeSuccess(assetId: string, assetName: string, assetType: string, inUseFlag: boolean){
-        const response = await this.request.put(`${this.url}/assets`, {
+        const response = await this.request.put(`${testdata.baseUrl}/assets`, {
             data: {
                     assetId: assetId,
                     assetName: assetName,
@@ -47,7 +47,7 @@ export class AssetsApi {
     }
 
     async deleteAssetAndStatusShouldBeSuccess(assetId: string){
-        const response = await this.request.delete(`${this.url}/assets/${assetId}`)
+        const response = await this.request.delete(`${testdata.baseUrl}/assets/${assetId}`)
         const responseBody = JSON.parse(await response.text())
         expect(responseBody.status).toEqual('success')
         console.log("Delete responseBody",responseBody)

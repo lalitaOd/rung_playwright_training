@@ -1,0 +1,18 @@
+{
+    "createAsset": {
+        "assetId": "rung_id",
+        "assetName": "Macbook Pro",
+        "assetType": "1",
+        "inUseFlag": false
+    },
+    "updateAsset": {
+        "assetId": "rung_id",
+        "assetName": "Macbook Pro",
+        "assetType": "1",
+        "inUseFlag": true
+    },
+    "deleteAsset": {
+        "assetId": "rung_id"
+    },
+    "baseUrl": "http://localhost:8082"
+}

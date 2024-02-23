@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '../pages/fixtures'
+import testdata from '../testdata/testdata.json';
 
 
 test.describe('TEST ASSETS API', ()=>{
@@ -9,15 +10,15 @@ test.describe('TEST ASSETS API', ()=>{
     })
 
     test('Create asset and verify status success', async ({assetsApi})=>{
-        await  assetsApi.createAssetAndStatusShouldBeSuccess('rung_id', 'Macbook Pro', '1', false)
+        await  assetsApi.createAssetAndStatusShouldBeSuccess(testdata.createAsset.assetId, testdata.createAsset.assetName, testdata.createAsset.assetType, testdata.createAsset.inUseFlag)
     })
 
     test('Update asset and verify status success', async ({assetsApi})=>{
-        await  assetsApi.updateAssetAndStatusShouldBeSuccess('rung_id', 'Macbook Pro M1', '1', true)
+        await  assetsApi.updateAssetAndStatusShouldBeSuccess(testdata.updateAsset.assetId, testdata.updateAsset.assetName, testdata.updateAsset.assetType, testdata.updateAsset.inUseFlag)
     })
 
     test('Delete asset and verify status success', async ({assetsApi})=>{
-        await  assetsApi.deleteAssetAndStatusShouldBeSuccess('rung_id')
+        await  assetsApi.deleteAssetAndStatusShouldBeSuccess(testdata.deleteAsset.assetId)
     })
 })
 
